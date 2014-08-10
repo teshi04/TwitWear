@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Twitwear</string>
+    <string name="button_tweet">Tweet</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_action_tweet">Tweet via Twitwear</string>
+    <string name="label_action_tweet2">Tweet</string>
+    <string name="label_favorite">Favorite</string>
+    <string name="label_reply">Reply</string>
+    <string name="label_retweet">Retweet</string>
+    <string name="confirmation_animation_success">Success</string>
+    <string name="confirmation_animation_failure">Failure</string>
+
+    <string-array name="menu">
+        <item>Tweet</item>
+        <item>Show Timeline</item>
+    </string-array>
+
+
+</resources>

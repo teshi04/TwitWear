@@ -1,0 +1,17 @@
+local.properties
+gradle.properties
+
+# for gradle, IDEA
+.gradle
+build/
+*.iml
+!.idea/runConfigurations/*
+.idea/*.xml
+.idea/.name
+.idea/copyright/
+.idea/libraries/
+.idea/scopes/
+.idea/inspectionProfiles/
+
+# for Mac
+.DS_Store
