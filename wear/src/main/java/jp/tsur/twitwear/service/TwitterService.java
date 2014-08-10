@@ -7,8 +7,6 @@ import android.support.wearable.activity.ConfirmationActivity;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
@@ -64,38 +62,34 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
             }
 
             PutDataMapRequest dataMap;
-            PendingResult<DataApi.DataItemResult> pendingResult = null;
+            DataApi.DataItemResult result = null;
             switch (intent.getStringExtra(EXTRA_ACTION)) {
                 case DATA_MAP_PATH_FAVORITE:
                     dataMap = PutDataMapRequest.create(DATA_MAP_PATH_FAVORITE);
                     dataMap.getDataMap().putLong("status_id", intent.getLongExtra("status_id", -1));
-                    pendingResult = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest());
+                    result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
                     break;
                 case DATA_MAP_PATH_RETWEET:
                     dataMap = PutDataMapRequest.create(DATA_MAP_PATH_RETWEET);
                     dataMap.getDataMap().putLong("status_id", intent.getLongExtra("status_id", -1));
-                    pendingResult = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest());
+                    result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
                     break;
                 case DATA_MAP_PATH_REPLY:
                     dataMap = PutDataMapRequest.create(DATA_MAP_PATH_REPLY);
                     dataMap.getDataMap().putString("status_text", intent.getStringExtra("status_text"));
-                    pendingResult = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest());
+                    result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
                     break;
             }
 
-            assert pendingResult != null;
-            pendingResult.setResultCallback(new ResultCallback<DataApi.DataItemResult>() {
-                @Override
-                public void onResult(final DataApi.DataItemResult result) {
-                    if (result.getStatus().isSuccess()) {
-                        ProgressUtils.startConfirmationActivity(TwitterService.this,
-                                ConfirmationActivity.SUCCESS_ANIMATION, getString(R.string.confirmation_animation_success));
-                    } else {
-                        ProgressUtils.startConfirmationActivity(TwitterService.this,
-                                ConfirmationActivity.FAILURE_ANIMATION, getString(R.string.confirmation_animation_failure));
-                    }
-                }
-            });
+            assert result != null;
+
+//            if (result.getStatus().isSuccess()) {
+//                ProgressUtils.startConfirmationActivity(TwitterService.this,
+//                        ConfirmationActivity.SUCCESS_ANIMATION, getString(R.string.confirmation_animation_success));
+//            } else {
+//                ProgressUtils.startConfirmationActivity(TwitterService.this,
+//                        ConfirmationActivity.FAILURE_ANIMATION, getString(R.string.confirmation_animation_failure));
+//            }
         }
 
         mGoogleApiClient.disconnect();
