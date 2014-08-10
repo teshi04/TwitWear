@@ -25,7 +25,6 @@
         </activity>
         <activity
             android:name=".ui.SignInActivity"
-            android:label="@string/title_activity_sign_in"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
