@@ -21,7 +21,7 @@
         android:id="@+id/action_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         tools:text="お気に入り" />
 
 </LinearLayout>
