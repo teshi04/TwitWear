@@ -6,12 +6,12 @@
 
     <!--Main-->
     <string name="label_connected_twitter_id">connected: %s</string>
+    <string name="action_logout">Sign out</string>
 
     <!-- Sign in-->
     <string name="twitter_callback_url">tsurwear://twitter</string>
     <string name="button_sign_in_with_twitter">Sign in with Twitter</string>
     <string name="toast_api_key_is_invalid">API Key is invalid.</string>
     <string name="label_authentication_failure">Authentication failure</string>
-    <string name="action_logout">Logout</string>
 
 </resources>

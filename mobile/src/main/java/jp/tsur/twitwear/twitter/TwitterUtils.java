@@ -77,4 +77,15 @@ public class TwitterUtils {
     public static boolean hasAccessToken(Context context) {
         return loadAccessToken(context) != null;
     }
+
+    /**
+     * アクセストークンを削除（認証失敗時などトークンが無効な場合に使用）
+     */
+    public static void resetAccessToken(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(TOKEN);
+        editor.remove(TOKEN_SECRET);
+        editor.commit();
+    }
 }

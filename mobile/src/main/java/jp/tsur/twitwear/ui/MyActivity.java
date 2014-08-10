@@ -3,6 +3,7 @@ package jp.tsur.twitwear.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -10,8 +11,8 @@ import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import jp.tsur.twitwear.R;
-import jp.tsur.twitwear.twitter.TwitterUtils;
 import jp.tsur.twitwear.task.VerifyCredentialsTask;
+import jp.tsur.twitwear.twitter.TwitterUtils;
 import twitter4j.User;
 
 
@@ -41,7 +42,14 @@ public class MyActivity extends Activity {
             }
         };
         task.execute();
+    }
 
+    private void moveToMain() {
+        Intent intent = new Intent(this, MyActivity.class);
+        TaskStackBuilder builder = TaskStackBuilder.create(this);
+        builder.addNextIntent(intent);
+        builder.startActivities();
+        finish();
     }
 
     @Override
@@ -58,6 +66,8 @@ public class MyActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_logout) {
+            TwitterUtils.resetAccessToken(this);
+            moveToMain();
             return true;
         }
         return super.onOptionsItemSelected(item);
