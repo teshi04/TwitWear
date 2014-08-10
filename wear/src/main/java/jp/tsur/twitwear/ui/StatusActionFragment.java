@@ -71,7 +71,7 @@ public class StatusActionFragment extends Fragment {
                 break;
             case SampleGridPagerAdapter.ACTION_RETWEET:
                 mActionNameLabel.setText(getString(R.string.label_retweet));
-                mCircledImageView.setImageDrawable(getResources().getDrawable(R.drawable.action_reply));
+                mCircledImageView.setImageDrawable(getResources().getDrawable(R.drawable.action_rt));
                 break;
         }
     }
