@@ -37,8 +37,14 @@ public class MyActivity extends Activity {
         VerifyCredentialsTask task = new VerifyCredentialsTask(this) {
             @Override
             protected void onPostExecute(User user) {
+                if (user == null) {
+                    TwitterUtils.resetAccessToken(MyActivity.this);
+                    Intent intent = new Intent(MyActivity.this, SignInActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return;
+                }
                 mConnectedTwitterId.setText(getString(R.string.label_connected_twitter_id, user.getScreenName()));
-
             }
         };
         task.execute();
