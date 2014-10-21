@@ -10,13 +10,27 @@ android {
         applicationId "jp.tsur.twitwear"
         minSdkVersion 20
         targetSdkVersion 20
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.2"
     }
+
+    signingConfigs {
+        // debug {
+        //     storeFile file("debug.keystore")
+        // }
+
+        release
+    }
+
     buildTypes {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // gradle.properties にリリース署名用の設定があれば署名を有効化します。設定のサンプルとして gradle.properties.forReleaseSigning を置いたので参考にしてください。
+            if (project.hasProperty('storeFile')) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 
@@ -27,12 +41,26 @@ android {
     }
 }
 
+
+if (project.hasProperty('storeFile')) {
+    android.signingConfigs.release.storeFile = file(storeFile)
+}
+if (project.hasProperty('storePassword')) {
+    android.signingConfigs.release.storePassword = storePassword
+}
+if (project.hasProperty('keyAlias')) {
+    android.signingConfigs.release.keyAlias = keyAlias
+}
+if (project.hasProperty('keyPassword')) {
+    android.signingConfigs.release.keyPassword = keyPassword
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':common')
 
     compile 'com.google.android.support:wearable:+'
-    compile 'com.google.android.gms:play-services:5.0.89'
+    compile 'com.google.android.gms:play-services-wearable:6.1.11'
     compile "com.jakewharton:butterknife:${butterKnifeVersion}"
     apt "com.jakewharton:butterknife:${butterKnifeVersion}"
 }
