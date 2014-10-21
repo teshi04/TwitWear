@@ -32,7 +32,6 @@
             </intent-filter>
         </service>
         <service android:name=".service.TwitterService" />
-        <service android:name=".service.FavoriteService" />
     </application>
 
 </manifest>
