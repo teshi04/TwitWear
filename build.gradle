@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.0'
+        classpath 'com.android.tools.build:gradle:0.14.2'
         classpath 'com.uphyca.gradle:gradle-android-apt-plugin:0.9.4'
 
 
@@ -22,7 +22,7 @@ allprojects {
 
 project.ext {
     compileSdkVersion = 19
-    buildToolsVersion = "19.1.0"
+    buildToolsVersion = "20.1.1"
 
     preDexLibs = !project.hasProperty('disablePreDex')
 
