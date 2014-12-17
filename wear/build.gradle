@@ -24,7 +24,7 @@ android {
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             // gradle.properties にリリース署名用の設定があれば署名を有効化します。設定のサンプルとして gradle.properties.forReleaseSigning を置いたので参考にしてください。

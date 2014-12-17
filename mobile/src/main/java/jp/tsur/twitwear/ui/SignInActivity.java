@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import jp.tsur.twitwear.R;
 import jp.tsur.twitwear.twitter.TwitterUtils;
@@ -16,16 +19,23 @@ import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
-public class SignInActivity extends Activity {
+public class SignInActivity extends ActionBarActivity {
 
     private Twitter mTwitter;
     private RequestToken mRequestToken;
+
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.inject(this);
+
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+        }
     }
 
 

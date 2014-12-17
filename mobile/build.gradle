@@ -3,13 +3,13 @@ apply plugin: 'android-apt'
 
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "jp.tsur.twitwear"
         minSdkVersion 18
-        targetSdkVersion 19
+        targetSdkVersion 21
         versionCode 4
         versionName "1.0.3"
     }
@@ -24,7 +24,7 @@ android {
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             // gradle.properties にリリース署名用の設定があれば署名を有効化します。設定のサンプルとして gradle.properties.forReleaseSigning を置いたので参考にしてください。
@@ -71,4 +71,5 @@ dependencies {
     compile "org.twitter4j:twitter4j-stream:${twitter4jVersion}"
     compile "com.jakewharton:butterknife:${butterKnifeVersion}"
     apt "com.jakewharton:butterknife:${butterKnifeVersion}"
+    compile 'com.android.support:appcompat-v7:21.+'
 }

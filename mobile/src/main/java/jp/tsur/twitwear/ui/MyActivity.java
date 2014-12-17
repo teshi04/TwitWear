@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,16 +18,23 @@ import jp.tsur.twitwear.twitter.TwitterUtils;
 import twitter4j.User;
 
 
-public class MyActivity extends Activity {
+public class MyActivity extends ActionBarActivity {
 
     @InjectView(R.id.connected_twitter_id_label)
     TextView mConnectedTwitterId;
+
+    @InjectView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
         ButterKnife.inject(this);
+
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+        }
 
         if (!TwitterUtils.hasAccessToken(this)) {
             Intent intent = new Intent(this, SignInActivity.class);
