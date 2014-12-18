@@ -12,17 +12,23 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <activity
-            android:name=".ui.MyActivity"
-            android:label="@string/app_name" >
+        <activity android:name=".ui.RecordingActivity"
+            android:label="@string/action_tweet">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PostActivity" />
+        <activity android:name=".ui.PostActivity"/>
+        <activity android:name=".ui.RequestTlActivity"
+            android:label="@string/action_timeline">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name="android.support.wearable.activity.ConfirmationActivity" />
         <activity android:name=".ui.TimelineActivity" />
 
