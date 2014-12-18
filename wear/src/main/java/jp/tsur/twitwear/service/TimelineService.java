@@ -27,7 +27,7 @@ import jp.tsur.twitwear.lib.Page;
 import jp.tsur.twitwear.ui.TimelineActivity;
 
 
-public class TimelinelService extends WearableListenerService {
+public class TimelineService extends WearableListenerService {
 
     private static final String TAG = "twitwear";
     private GoogleApiClient mGoogleApiClient;

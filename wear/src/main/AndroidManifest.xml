@@ -35,7 +35,7 @@
         <activity android:name="android.support.wearable.activity.ConfirmationActivity" />
         <activity android:name=".ui.TimelineActivity" />
 
-        <service android:name=".service.TimelinelService">
+        <service android:name=".service.TimelineService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>
