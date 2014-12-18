@@ -4,14 +4,14 @@ apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "20.0.0"
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "jp.tsur.twitwear"
         minSdkVersion 18
         targetSdkVersion 21
-        versionCode 4
-        versionName "1.0.3"
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
 
     signingConfigs {

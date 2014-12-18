@@ -21,8 +21,10 @@ allprojects {
 }
 
 project.ext {
-    compileSdkVersion = 19
-    buildToolsVersion = "20.1.1"
+    buildToolsVersion = "21.1.1"
+
+    versionCode = 5
+    versionName = "1.0.4"
 
     preDexLibs = !project.hasProperty('disablePreDex')
 
