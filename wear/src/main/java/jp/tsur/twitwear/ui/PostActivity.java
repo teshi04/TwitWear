@@ -75,7 +75,7 @@ public class PostActivity extends Activity implements
     }
 
     private void startConfirmationTimer() {
-        mDelayedConfirmationView.setTotalTimeMs(3 * 1000);
+        mDelayedConfirmationView.setTotalTimeMs(5 * 1000);
         mDelayedConfirmationView.setListener(new DelayedConfirmationView.DelayedConfirmationListener() {
             @Override
             public void onTimerFinished(View view) {
