@@ -3,16 +3,15 @@ package jp.tsur.twitwear.ui;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.wearable.view.CardFragment;
 import android.support.wearable.view.FragmentGridPagerAdapter;
-import android.support.wearable.view.ImageReference;
 import android.view.Gravity;
 
 import java.util.ArrayList;
 
 import jp.tsur.twitwear.lib.Page;
-import jp.tsur.twitwear.R;
 
 /**
  * Constructs fragments as requested by the GridViewPager. For each row a
@@ -26,10 +25,12 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
     public static final int ACTION_RETWEET = 3;
 
     private final ArrayList<Page> mPages;
+    private Context mContext;
 
     public SampleGridPagerAdapter(Context context, FragmentManager fm, ArrayList<Page> pages) {
         super(fm);
         mPages = pages;
+        mContext = context;
     }
 
     @Override
@@ -55,10 +56,9 @@ public class SampleGridPagerAdapter extends FragmentGridPagerAdapter {
         }
     }
 
-    // アイコン
     @Override
-    public ImageReference getBackground(int row, int column) {
-        return ImageReference.forBitmap(mPages.get(row).getBitmap());
+    public Drawable getBackgroundForPage(int row, int column) {
+        return new BitmapDrawable(mContext.getResources(), mPages.get(row).getBitmap());
     }
 
     @Override
