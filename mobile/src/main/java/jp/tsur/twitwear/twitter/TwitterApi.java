@@ -18,7 +18,7 @@ public class TwitterApi {
     }
 
     public static void createFavorite(Context context, long statusId) throws TwitterException {
-         TwitterUtils.getTwitterInstance(context).createFavorite(statusId);
+        TwitterUtils.getTwitterInstance(context).createFavorite(statusId);
     }
 
     public static void retweetStatus(Context context, long statusId) throws TwitterException {

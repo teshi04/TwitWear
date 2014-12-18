@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import jp.tsur.twitwear.lib.Page;
 import jp.tsur.twitwear.R;
+import jp.tsur.twitwear.lib.Page;
 import jp.tsur.twitwear.utils.ProgressUtils;
 
 public class TimelineActivity extends Activity {

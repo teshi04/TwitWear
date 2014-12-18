@@ -3,7 +3,6 @@ package jp.tsur.twitwear.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.wearable.activity.ConfirmationActivity;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -14,9 +13,6 @@ import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.Wearable;
 
 import java.util.concurrent.TimeUnit;
-
-import jp.tsur.twitwear.R;
-import jp.tsur.twitwear.utils.ProgressUtils;
 
 
 public class TwitterService extends IntentService implements GoogleApiClient.ConnectionCallbacks,
