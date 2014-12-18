@@ -1,6 +1,7 @@
 package jp.tsur.twitwear.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.ConfirmationActivity;
@@ -20,7 +21,6 @@ import com.google.android.gms.wearable.Wearable;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import jp.tsur.twitwear.R;
-import jp.tsur.twitwear.utils.ProgressUtils;
 
 
 public class PostActivity extends Activity implements
@@ -91,10 +91,10 @@ public class PostActivity extends Activity implements
                     @Override
                     public void onResult(final DataApi.DataItemResult result) {
                         if (result.getStatus().isSuccess()) {
-                            ProgressUtils.startConfirmationActivity(PostActivity.this,
+                            startConfirmationActivity(PostActivity.this,
                                     ConfirmationActivity.SUCCESS_ANIMATION, getString(R.string.confirmation_animation_success));
                         } else {
-                            ProgressUtils.startConfirmationActivity(PostActivity.this,
+                            startConfirmationActivity(PostActivity.this,
                                     ConfirmationActivity.FAILURE_ANIMATION, getString(R.string.confirmation_animation_failure));
                         }
                         finish();
@@ -109,6 +109,14 @@ public class PostActivity extends Activity implements
             }
         });
         mDelayedConfirmationView.start();
+    }
+
+    public static void startConfirmationActivity(Context context, int animationType, String message) {
+        Intent confirmationActivity = new Intent(context, ConfirmationActivity.class)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                .putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE, animationType)
+                .putExtra(ConfirmationActivity.EXTRA_MESSAGE, message);
+        context.startActivity(confirmationActivity);
     }
 
     @Override

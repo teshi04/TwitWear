@@ -3,6 +3,7 @@ package jp.tsur.twitwear.service;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -79,7 +80,9 @@ public class TimelinelService extends WearableListenerService {
                 Intent intent = new Intent(this, TimelineActivity.class);
                 intent.putExtra("pages", pages);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                TaskStackBuilder builder = TaskStackBuilder.create(this);
+                builder.addNextIntent(intent);
+                builder.startActivities();
             }
         }
     }

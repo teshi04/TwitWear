@@ -13,7 +13,6 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import jp.tsur.twitwear.R;
 import jp.tsur.twitwear.lib.Page;
-import jp.tsur.twitwear.utils.ProgressUtils;
 
 public class TimelineActivity extends Activity {
 
@@ -26,7 +25,6 @@ public class TimelineActivity extends Activity {
         setContentView(R.layout.activity_timeline);
         ButterKnife.inject(this);
 
-        ProgressUtils.dismissProgressDialog();
         final Resources res = getResources();
         mPager.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
             @Override

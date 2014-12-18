@@ -3,13 +3,13 @@ apply plugin: 'android-apt'
 
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 21
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "jp.tsur.twitwear"
         minSdkVersion 20
-        targetSdkVersion 20
+        targetSdkVersion 21
         versionCode 4
         versionName "1.0.3"
     }
