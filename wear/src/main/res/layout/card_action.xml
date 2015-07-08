@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.wearable.view.ActionPage xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/action_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
-
-    <android.support.wearable.view.CircledImageView
-        android:id="@+id/circle_image_view"
-        android:layout_width="134dp"
-        android:layout_height="134dp"
-        app:circle_color="@color/wl_blue"
-        app:circle_radius="52dp"
-        app:circle_radius_pressed="54dp"
-        tools:src="@drawable/action_reply" />
-
-    <TextView
-        android:id="@+id/action_name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        tools:text="お気に入り" />
-
-</LinearLayout>
+    android:color="@color/wl_blue"
+    android:maxLines="1"
+    android:src="@drawable/action_reply"
+    app:rippleColor="@color/white"
+    tools:text="お気に入り" />

@@ -5,11 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.annotation.Nullable;
-import android.support.wearable.view.CircledImageView;
+import android.support.wearable.view.ActionPage;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -24,10 +23,8 @@ public class StatusActionFragment extends Fragment {
 
     private static final int SPEECH_REQUEST_CODE = 0;
 
-    @InjectView(R.id.action_name_label)
-    TextView mActionNameLabel;
-    @InjectView(R.id.circle_image_view)
-    CircledImageView mCircledImageView;
+    @InjectView(R.id.action_page)
+    ActionPage actionPage;
 
     private int mAction;
     private long mStatusId;
@@ -62,21 +59,21 @@ public class StatusActionFragment extends Fragment {
         mScreenName = arg.getString("screen_name");
         switch (mAction) {
             case SampleGridPagerAdapter.ACTION_FAVORITE:
-                mActionNameLabel.setText(getString(R.string.label_favorite));
-                mCircledImageView.setImageDrawable(getResources().getDrawable(R.drawable.action_favorite));
+                actionPage.setText(getString(R.string.label_favorite));
+                actionPage.setImageDrawable(getResources().getDrawable(R.drawable.action_favorite));
                 break;
             case SampleGridPagerAdapter.ACTION_REPLY:
-                mActionNameLabel.setText(getString(R.string.label_reply));
-                mCircledImageView.setImageDrawable(getResources().getDrawable(R.drawable.action_reply));
+                actionPage.setText(getString(R.string.label_reply));
+                actionPage.setImageDrawable(getResources().getDrawable(R.drawable.action_reply));
                 break;
             case SampleGridPagerAdapter.ACTION_RETWEET:
-                mActionNameLabel.setText(getString(R.string.label_retweet));
-                mCircledImageView.setImageDrawable(getResources().getDrawable(R.drawable.action_rt));
+                actionPage.setText(getString(R.string.label_retweet));
+                actionPage.setImageDrawable(getResources().getDrawable(R.drawable.action_rt));
                 break;
         }
     }
 
-    @OnClick(R.id.circle_image_view)
+    @OnClick(R.id.action_page)
     void action() {
         Intent intent;
         switch (mAction) {
@@ -115,5 +112,11 @@ public class StatusActionFragment extends Fragment {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.reset(this);
     }
 }
