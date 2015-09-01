@@ -1,52 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.wearable.view.WearableFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="15dp">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp"
-        app:layout_box="all">
 
-        <TextView
-            android:id="@+id/action_tweet_label2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_action_tweet2"
-            android:textColor="@color/grey"
-            android:textSize="14sp" />
+    <TextView
+        android:id="@+id/action_tweet_label2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/label_action_tweet2"
+        android:textColor="@color/grey"
+        android:textSize="14sp"
+        app:layout_marginLeftRound="36dp"
+        app:layout_marginTopRound="36dp" />
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:paddingTop="18dp"
-            tools:text="サンプル" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="40dp"
+        android:textSize="12sp"
+        app:layout_marginLeftRound="36dp"
+        app:layout_marginTopRound="52dp"
+        tools:text="サンプル" />
 
-        <android.support.wearable.view.DelayedConfirmationView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/timer"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_gravity="bottom|left"
-            android:src="@drawable/cross_white"
-            app:circle_border_color="@color/circle_border_color"
-            app:circle_border_width="8dp"
-            app:circle_color="@color/blue"
-            app:circle_padding="4dp"
-            app:circle_radius="40dp" />
+    <android.support.wearable.view.DelayedConfirmationView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:src="@drawable/cross_white"
+        app:circle_border_color="@color/circle_border_color"
+        app:circle_border_width="8dp"
+        app:circle_color="@color/blue"
+        app:circle_padding="4dp"
+        app:circle_radius="40dp"
+        app:layout_marginBottomRound="32dp"
+        app:layout_marginLeftRound="34dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_gravity="bottom|right"
-            android:layout_marginEnd="4dp"
-            android:gravity="center"
-            android:text="@string/label_cancel"
-            android:textSize="14sp" />
-    </FrameLayout>
-</android.support.wearable.view.BoxInsetLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:text="@string/label_cancel"
+        android:textSize="14sp"
+        app:layout_marginBottomRound="32dp"
+        app:layout_marginRightRound="34dp" />
+
+</android.support.wearable.view.WearableFrameLayout>
