@@ -3,13 +3,13 @@ apply plugin: 'android-apt'
 
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "jp.tsur.twitwear"
         minSdkVersion 18
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
     }
@@ -61,15 +61,14 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
     compile project(':common')
-    compile 'com.google.android.gms:play-services-wearable:6.1.11'
+    compile 'com.google.android.gms:play-services-wearable:7.8.0'
 
-    compile "com.android.support:support-v4:20.+"
-    compile "com.google.code.gson:gson:2.2.4"
+    compile "com.google.code.gson:gson:2.3"
     compile "org.twitter4j:twitter4j-core:${twitter4jVersion}"
     compile "org.twitter4j:twitter4j-async:${twitter4jVersion}"
     compile "org.twitter4j:twitter4j-media-support:${twitter4jVersion}"
     compile "org.twitter4j:twitter4j-stream:${twitter4jVersion}"
     compile "com.jakewharton:butterknife:${butterKnifeVersion}"
     apt "com.jakewharton:butterknife:${butterKnifeVersion}"
-    compile 'com.android.support:appcompat-v7:21.+'
+    compile 'com.android.support:appcompat-v7:22.2.0'
 }

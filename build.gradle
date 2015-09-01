@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:1.2.3'
         classpath 'com.uphyca.gradle:gradle-android-apt-plugin:0.9.4'
 
 
@@ -21,7 +21,7 @@ allprojects {
 }
 
 project.ext {
-    buildToolsVersion = "21.1.1"
+    buildToolsVersion = "22.0.1"
 
     versionCode = 5
     versionName = "1.0.4"
