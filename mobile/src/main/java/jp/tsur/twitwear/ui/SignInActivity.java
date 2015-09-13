@@ -5,10 +5,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import jp.tsur.twitwear.R;
 import jp.tsur.twitwear.twitter.TwitterUtils;
@@ -20,21 +18,14 @@ import twitter4j.auth.RequestToken;
 
 public class SignInActivity extends AppCompatActivity {
 
-    private Twitter mTwitter;
-    private RequestToken mRequestToken;
-
-    @InjectView(R.id.toolbar)
-    Toolbar mToolbar;
+    private Twitter twitter;
+    private RequestToken requestToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.inject(this);
-
-        if (mToolbar != null) {
-            setSupportActionBar(mToolbar);
-        }
     }
 
 
@@ -47,13 +38,13 @@ public class SignInActivity extends AppCompatActivity {
      * OAuth認証（厳密には認可）を開始します。
      */
     private void startAuthorize() {
-        mTwitter = TwitterUtils.getTwitterInstance(this);
+        twitter = TwitterUtils.getTwitterInstance(this);
         AsyncTask<Void, Void, String> task = new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
                 try {
-                    mRequestToken = mTwitter.getOAuthRequestToken(getString(R.string.twitter_callback_url));
-                    return mRequestToken.getAuthorizationURL();
+                    requestToken = twitter.getOAuthRequestToken(getString(R.string.twitter_callback_url));
+                    return requestToken.getAuthorizationURL();
                 } catch (TwitterException e) {
                     e.printStackTrace();
                 }
@@ -86,7 +77,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             protected AccessToken doInBackground(String... params) {
                 try {
-                    return mTwitter.getOAuthAccessToken(mRequestToken, params[0]);
+                    return twitter.getOAuthAccessToken(requestToken, params[0]);
                 } catch (TwitterException e) {
                     e.printStackTrace();
                 }

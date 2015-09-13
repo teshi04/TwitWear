@@ -10,16 +10,16 @@ import twitter4j.User;
 
 public class VerifyCredentialsTask extends AsyncTask<Void, Void, User> {
 
-    Context mContext;
+    Context context;
 
     public VerifyCredentialsTask(Context context) {
-        mContext = context;
+        this.context = context;
     }
 
     @Override
     protected User doInBackground(Void... params) {
         try {
-            return TwitterUtils.getTwitterInstance(mContext).verifyCredentials();
+            return TwitterUtils.getTwitterInstance(context).verifyCredentials();
         } catch (TwitterException e) {
             e.printStackTrace();
             return null;

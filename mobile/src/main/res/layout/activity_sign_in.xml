@@ -1,21 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="jp.tsur.twitwear.ui.SignInActivity">
-
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
-    <Button
-        android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="58dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_margin="16dp"
-        android:gravity="center_vertical"
-        android:text="@string/button_sign_in_with_twitter" />
-
-</RelativeLayout>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sign_in_button"
+    android:layout_width="wrap_content"
+    android:layout_height="58dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerInParent="true"
+    android:layout_margin="16dp"
+    android:gravity="center_vertical"
+    android:text="@string/button_sign_in_with_twitter" />

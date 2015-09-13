@@ -48,7 +48,7 @@ public class TwitterUtils {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(TOKEN, accessToken.getToken());
         editor.putString(TOKEN_SECRET, accessToken.getTokenSecret());
-        editor.commit();
+        editor.apply();
     }
 
     /**
@@ -86,6 +86,6 @@ public class TwitterUtils {
         SharedPreferences.Editor editor = preferences.edit();
         editor.remove(TOKEN);
         editor.remove(TOKEN_SECRET);
-        editor.commit();
+        editor.apply();
     }
 }

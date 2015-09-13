@@ -3,9 +3,7 @@ package jp.tsur.twitwear.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.TaskStackBuilder;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -20,21 +18,14 @@ import twitter4j.User;
 
 public class MyActivity extends AppCompatActivity {
 
-    @InjectView(R.id.connected_twitter_id_label)
-    TextView mConnectedTwitterId;
-
-    @InjectView(R.id.toolbar)
-    Toolbar mToolbar;
+    @InjectView(R.id.screen_name)
+    TextView screenNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
         ButterKnife.inject(this);
-
-        if (mToolbar != null) {
-            setSupportActionBar(mToolbar);
-        }
 
         if (!TwitterUtils.hasAccessToken(this)) {
             Intent intent = new Intent(this, SignInActivity.class);
@@ -53,7 +44,7 @@ public class MyActivity extends AppCompatActivity {
                     finish();
                     return;
                 }
-                mConnectedTwitterId.setText(getString(R.string.label_connected_twitter_id, user.getScreenName()));
+                screenNameView.setText(getString(R.string.label_connected_twitter_id, user.getScreenName()));
             }
         };
         task.execute();
