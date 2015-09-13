@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <ProgressBar
-        style="@android:style/Widget.DeviceDefault.ProgressBar"
+    <android.support.wearable.view.ProgressSpinner
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
