@@ -9,5 +9,5 @@
     android:color="@color/wl_blue"
     android:maxLines="1"
     android:src="@drawable/action_reply"
-    app:rippleColor="@color/white"
+    app:buttonRippleColor="@color/white"
     tools:text="お気に入り" />
