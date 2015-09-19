@@ -24,7 +24,6 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
     public static final String DATA_MAP_PATH_REPLY = "/reply";
     public static final String EXTRA_ACTION = "action";
 
-
     private GoogleApiClient mGoogleApiClient;
 
     public TwitterService() {
@@ -42,8 +41,14 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
     }
 
     @Override
+    public void onStart(Intent intent, int startId) {
+        super.onStart(intent, startId);
+        mGoogleApiClient.connect();
+    }
+
+    @Override
     protected void onHandleIntent(Intent intent) {
-        mGoogleApiClient.blockingConnect(100, TimeUnit.MILLISECONDS);
+        mGoogleApiClient.blockingConnect(30, TimeUnit.SECONDS);
         if (mGoogleApiClient.isConnected()) {
 
             if (intent.getStringExtra(EXTRA_ACTION).equals(DATA_MAP_PATH_TIMELINE)) {
