@@ -37,6 +37,12 @@ public class PostActivity extends Activity implements
     @InjectView(R.id.timer)
     DelayedConfirmationView mDelayedConfirmationView;
 
+    public static Intent createIntent(Context context, String spokenText) {
+        Intent intent = new Intent(context, PostActivity.class);
+        intent.putExtra(PostActivity.EXTRA_STATUS_TEXT, spokenText);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

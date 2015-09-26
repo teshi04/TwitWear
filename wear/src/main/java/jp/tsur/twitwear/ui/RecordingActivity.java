@@ -33,8 +33,7 @@ public class RecordingActivity extends Activity {
                     RecognizerIntent.EXTRA_RESULTS);
             String spokenText = results.get(0);
 
-            Intent intent = new Intent(this, PostActivity.class);
-            intent.putExtra(PostActivity.EXTRA_STATUS_TEXT, spokenText);
+            Intent intent = PostActivity.createIntent(this, spokenText);
             TaskStackBuilder builder = TaskStackBuilder.create(this);
             builder.addNextIntent(intent);
             builder.startActivities();
