@@ -49,7 +49,6 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
     @Override
     protected void onHandleIntent(Intent intent) {
         mGoogleApiClient.blockingConnect(30, TimeUnit.SECONDS);
-        if (mGoogleApiClient.isConnected()) {
 
             if (intent.getStringExtra(EXTRA_ACTION).equals(DATA_MAP_PATH_TIMELINE)) {
                 NodeApi.GetConnectedNodesResult nodes =
@@ -84,15 +83,6 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
 
             assert result != null;
 
-//            if (result.getStatus().isSuccess()) {
-//                ProgressUtils.startConfirmationActivity(TwitterService.this,
-//                        ConfirmationActivity.SUCCESS_ANIMATION, getString(R.string.confirmation_animation_success));
-//            } else {
-//                ProgressUtils.startConfirmationActivity(TwitterService.this,
-//                        ConfirmationActivity.FAILURE_ANIMATION, getString(R.string.confirmation_animation_failure));
-//            }
-        }
-
         mGoogleApiClient.disconnect();
     }
 
@@ -107,6 +97,5 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
-
     }
 }
