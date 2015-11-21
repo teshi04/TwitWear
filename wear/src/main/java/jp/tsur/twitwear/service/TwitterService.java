@@ -50,38 +50,38 @@ public class TwitterService extends IntentService implements GoogleApiClient.Con
     protected void onHandleIntent(Intent intent) {
         mGoogleApiClient.blockingConnect(30, TimeUnit.SECONDS);
 
-            if (intent.getStringExtra(EXTRA_ACTION).equals(DATA_MAP_PATH_TIMELINE)) {
-                NodeApi.GetConnectedNodesResult nodes =
-                        Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
-                for (Node node : nodes.getNodes()) {
-                    Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), DATA_MAP_PATH_TIMELINE,
-                            new byte[0]);
-                }
-                mGoogleApiClient.disconnect();
-                return;
+        if (intent.getStringExtra(EXTRA_ACTION).equals(DATA_MAP_PATH_TIMELINE)) {
+            NodeApi.GetConnectedNodesResult nodes =
+                    Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
+            for (Node node : nodes.getNodes()) {
+                Wearable.MessageApi.sendMessage(mGoogleApiClient, node.getId(), DATA_MAP_PATH_TIMELINE,
+                        new byte[0]);
             }
+            mGoogleApiClient.disconnect();
+            return;
+        }
 
-            PutDataMapRequest dataMap;
-            DataApi.DataItemResult result = null;
-            switch (intent.getStringExtra(EXTRA_ACTION)) {
-                case DATA_MAP_PATH_FAVORITE:
-                    dataMap = PutDataMapRequest.create(DATA_MAP_PATH_FAVORITE);
-                    dataMap.getDataMap().putLong("status_id", intent.getLongExtra("status_id", -1));
-                    result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
-                    break;
-                case DATA_MAP_PATH_RETWEET:
-                    dataMap = PutDataMapRequest.create(DATA_MAP_PATH_RETWEET);
-                    dataMap.getDataMap().putLong("status_id", intent.getLongExtra("status_id", -1));
-                    result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
-                    break;
-                case DATA_MAP_PATH_REPLY:
-                    dataMap = PutDataMapRequest.create(DATA_MAP_PATH_REPLY);
-                    dataMap.getDataMap().putString("status_text", intent.getStringExtra("status_text"));
-                    result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
-                    break;
-            }
+        PutDataMapRequest dataMap;
+        DataApi.DataItemResult result = null;
+        switch (intent.getStringExtra(EXTRA_ACTION)) {
+            case DATA_MAP_PATH_FAVORITE:
+                dataMap = PutDataMapRequest.create(DATA_MAP_PATH_FAVORITE);
+                dataMap.getDataMap().putLong("status_id", intent.getLongExtra("status_id", -1));
+                result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
+                break;
+            case DATA_MAP_PATH_RETWEET:
+                dataMap = PutDataMapRequest.create(DATA_MAP_PATH_RETWEET);
+                dataMap.getDataMap().putLong("status_id", intent.getLongExtra("status_id", -1));
+                result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
+                break;
+            case DATA_MAP_PATH_REPLY:
+                dataMap = PutDataMapRequest.create(DATA_MAP_PATH_REPLY);
+                dataMap.getDataMap().putString("status_text", intent.getStringExtra("status_text"));
+                result = Wearable.DataApi.putDataItem(mGoogleApiClient, dataMap.asPutDataRequest()).await();
+                break;
+        }
 
-            assert result != null;
+        assert result != null;
 
         mGoogleApiClient.disconnect();
     }

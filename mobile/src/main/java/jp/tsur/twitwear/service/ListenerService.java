@@ -110,7 +110,7 @@ public class ListenerService extends WearableListenerService {
         for (twitter4j.Status status : statuses) {
             User user = status.getUser();
 
-            InputStream is = new URL(user.getOriginalProfileImageURL()).openStream();
+            InputStream is = new URL(user.getProfileImageURL()).openStream();
             Bitmap profileImage = BitmapFactory.decodeStream(is);
             is.close();
             Asset asset = createAssetFromBitmap(profileImage);
@@ -149,7 +149,7 @@ public class ListenerService extends WearableListenerService {
 
     private static Asset createAssetFromBitmap(Bitmap bitmap) {
         final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteStream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, byteStream);
         return Asset.createFromBytes(byteStream.toByteArray());
     }
 

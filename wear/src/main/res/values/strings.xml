@@ -6,7 +6,6 @@
     <string name="action_timeline">Show Timeline</string>
     <string name="button_tweet">Tweet</string>
     <string name="label_cancel">Cancel</string>
-    <string name="label_action_tweet">Tweet via Twitwear</string>
     <string name="label_action_tweet2">Tweet</string>
     <string name="label_favorite">Favorite</string>
     <string name="label_reply">Reply</string>
